@@ -7,8 +7,6 @@ import 'package:http/http.dart' as http;
 import 'package:flutter_weather_app/config.dart';
 
 class WeatherService {
-  WeatherService(apiKey);
-
   Future<CurrentDayModel> getCurrentWeather(String cityName) async {
     final response = await http.get(Uri.parse(
         '${forecastURL}weather?q=$cityName&appid=$apiKey&units=metric'));

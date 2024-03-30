@@ -4,11 +4,11 @@ import 'package:flutter_weather_app/models/current_day_model.dart';
 class CurrentForecast extends StatelessWidget {
   const CurrentForecast({
     super.key,
-    required CurrentDayModel weather,
+    required CurrentDayModel? weather,
     required this.currentDate,
   }) : _weather = weather;
 
-  final CurrentDayModel _weather;
+  final CurrentDayModel? _weather;
   final String currentDate;
 
   @override
@@ -19,17 +19,19 @@ class CurrentForecast extends StatelessWidget {
       padding: const EdgeInsets.all(16.0),
       child: Column(children: [
         Text(
-          _weather.cityName,
+          (_weather == null)
+              ? "Здесь должно быть название города"
+              : _weather.cityName,
         ),
         Text("$currentDate "),
         Text(
-          "Temperature: ${_weather.temperature.round()}°C",
+          "Temperature: ${_weather?.temperature.round()}°C",
         ),
         Text(
-          "Feels like: ${_weather.feelsLike.round()}°C",
+          "Feels like: ${_weather?.feelsLike.round()}°C",
         ),
         Text(
-          "Wind speed: ${_weather.windSpeed.round()}°C",
+          "Wind speed: ${_weather?.windSpeed.round()}°C",
         ),
       ]),
     )));
